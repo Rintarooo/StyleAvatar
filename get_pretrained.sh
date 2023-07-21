@@ -1,3 +1,4 @@
+#!/bin/bash
 # https://qiita.com/namakemono/items/c963e75e0af3f7eed732
 # FILE_ID=
 # 1XCdNiKx0qCJW_BryERJLLJ2ivppW80Cu
@@ -42,7 +43,7 @@ file_names=(
   "tdmm_lizhen.pt"
 )
 
-PRETRAINED_DIR="pretrained"
+PRETRAINED_DIR="styleunet/pretrained"
 if [ ! -d "$PRETRAINED_DIR" ]; then
   mkdir "$PRETRAINED_DIR"
   echo "'$PRETRAINED_DIR' is made"

@@ -166,3 +166,49 @@ If you use our code for your research, please consider citing:
 ## Acknowledgement & License
 The code is partially borrowed from [stylegan2-pytorch](https://github.com/rosinality/stylegan2-pytorch). And many thanks to the volunteers participated in data collection. Our License can be found in [LICENSE](./LICENSE).
 
+## Usage Docker
+```bash
+# VM上でビルド
+docker-compose -f .devcontainer/docker-compose.yml build style-avatar
+# docker-compose build
+# docker-compose build --no-cache
+
+xhost local:root
+
+docker-compose -f .devcontainer/docker-compose.yml run style-avatar /bin/bash
+
+# VMのremote chrome desktop上でコンテナ起動（-dオプションでバックグランド起動）
+docker-compose up -d
+
+# 起動しているか確認
+docker-compose ps
+
+# # ログ出し、デバッグ
+# docker-compose logs -f
+
+# コンテナ入る
+# docker-compose exec (service名) (command)
+docker-compose exec opengl-tutorial /bin/bash
+
+# GUI表示出来るか確認
+xeyes
+
+# コンテナ停止
+docker-compose down
+```
+
+コンテナ内でxeyesコマンドを実行したときに以下のエラーが出る場合
+```bash
+root@docker-desktop:/opt# xeyes
+No protocol specified
+Error: Can't open display: :20.0
+```
+
+Xサーバーの権限を与える
+```bash
+$ xhost +localhost
+localhost being added to access control list
+
+$ xhost + local:
+non-network local connections being added to access control list
+```
